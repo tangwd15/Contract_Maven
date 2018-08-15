@@ -49,7 +49,7 @@ public class AppTest
       Web3ClientVersion web3ClientVersion = web3.web3ClientVersion().send();
       String clientVersion = web3ClientVersion.getWeb3ClientVersion();
       System.out.println("**** clientVersion:\n     " + clientVersion);
-      String filePath = "D:\\区块链学习\\MyFile\\mvn_eTest\\MyTest";
+      String filePath = System.getProperty("user.dir");
       String fileName = "UTC--2018-08-14T14-52-51.919Z--8684ef445a1ffbe51919c2bab10da6df507992f4";
       Credentials credentials = WalletUtils.loadCredentials("Tang19970107", filePath+"/"+fileName);
       etest = ETest_sol_eTest.deploy( web3, credentials,
