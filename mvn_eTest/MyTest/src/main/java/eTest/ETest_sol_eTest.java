@@ -38,6 +38,8 @@ public class ETest_sol_eTest extends Contract {
     public static final String FUNC_OWNER = "owner";
 
     public static final String FUNC_GET = "get";
+    
+    public static final BigInteger big = new BigInteger("21000");
 
     protected ETest_sol_eTest(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
@@ -54,19 +56,19 @@ public class ETest_sol_eTest extends Contract {
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
-    public RemoteCall<TransactionReceipt> put(String Key, String KeyValue, BigInteger weiValue) {
+    public RemoteCall<TransactionReceipt> put(String Key, String KeyValue) {
         byte[] value = Numeric.hexStringToByteArray(KeyValue);
         final Function function = new Function(
                 FUNC_PUT,
                 Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(Key.getBytes()),
                 new org.web3j.abi.datatypes.generated.Bytes32(value)),
                 Collections.<TypeReference<?>>emptyList());
-        return executeRemoteCallTransaction(function, weiValue);
+        return executeRemoteCallTransaction(function, big);
     }
 
-    public String get(String Key, ETest_sol_eTest etest) throws Exception {
+    public String get(String Key) throws Exception {
         byte[] key = Key.getBytes();
-        byte[] value = etest.pairs(key).send();
+        byte[] value = this.pairs(key).send();
         String c = "";
         for (int i = 0; i < value.length; i++) {
           String hex = Integer.toHexString(value[i] & 0xFF);
