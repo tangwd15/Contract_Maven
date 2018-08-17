@@ -70,11 +70,11 @@ public class AppTest
       System.out.println("     KEY:\n       " + a);
       System.out.println("     KEYVALUE:\n       " + b);
       System.out.println("--------------------------------------------------------");
-      System.out.println("**** transaction information:\n    " + etest.put(a,b,big).send());
+      System.out.println("**** transaction information:\n    " + etest.put(a,b).send());
       System.out.println("--------------------------------------------------------");
       System.out.println("**** call pair() function...");
       System.out.println("     given Key:\n       " + a);
-      System.out.println("**** returns KeyValue:\n       " + etest.get(a, etest));
+      System.out.println("**** returns KeyValue:\n       " + etest.get(a));
       System.out.println("--------------------------------------------------------");
     }
 }
